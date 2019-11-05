@@ -9,40 +9,50 @@ public class Main {
 
         Scanner sc=new Scanner(System.in);
 
-        int t=sc.nextInt();
+        int t;
+        int n,i,j;
+        long[] A=new long[128];
+//        memset(A,-1,sizeof(A));
+        Arrays.fill(A,-1);
+        A[0]=0;
+        A[1]=0;
+        long[] B=new long[128];
+//        memset(B,-1,sizeof(B));
+        Arrays.fill(B,-1);
+        B[0]=0;
 
-        while (t-->0){
+//        map<long,long>mp;
 
-            int n=sc.nextInt();
-
-            int[] arr=new int[]{0,0,1,0,2,0,2,2,1,6,0,5,
-                                0,2,6,5,4,0,5,2,0,3,2,9,
-                                0,4,9,3,6,14,0,6,3,5,15,0,
-                                5,3,4,2,17,0,6,11,0,3,8,0,
-                                3,3,1,42,0,5,15,20,0,4,32,0,
-                                3,11,18,0,4,7,0,3,7,3,2,31,
-                                0,6,31,3,6,3,2,8,33,0,9,56,
-                                0,3,8,7,19,0,5,27,0,3,8,8,
-                                1,46,0,6,23,0,3,9,21,0,4,42,
-                                56,25,0,5,21,8,18,52,0,6,18,4,
-                                13,0,5,11,62,0,4,7,40};
-
-            int element=arr[n-1];
-
-            int[] arr2= Arrays.copyOf(arr,n);
+        for(i=0;i<127;i++)
+        {
+            if(B[(int)A[i]]!=-1)
+            {
+                A[i+1]=i-B[(int)A[i]];
+            }
+            else
+            {
+                A[i+1]=0;
+            }
+            B[(int)A[i]]=i;
+        }
 
 
-            List<Integer> list=new ArrayList<>();
+        t=sc.nextInt();
+        while(t-->0)
+        {
+           n=sc.nextInt();
 
-            for (int i=0;i<n;i++){
-                list.add(arr2[i]);
+            j=0;
+            for(i=0;i<n;i++)
+            {
+                if(A[n-1]==A[i])
+                    j++;
             }
 
-            int ans=Collections.frequency(list,element);
+//            cout<<j;
+//            cout<<endl;
 
-            System.out.println(ans);
-
-
+            System.out.println(j);
 
         }
     }

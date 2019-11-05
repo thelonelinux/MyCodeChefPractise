@@ -20,10 +20,6 @@ public class Main {
 
 
     public static void main(String[] args) throws java.lang.Exception {
-	// write your code here
-        /** some part working rest all TLE in codechef
-         * Even after some optimization its showing TLE only,
-         * I optimize by traversing only last three elements rather than all and adding first upto n-3 digit directly in the sumOfSquares ot save some time*/
 
         try{
 
@@ -36,9 +32,11 @@ public class Main {
                 int numOfDigits=in.nextInt();
 
                 int[] arr=new int[]{0,1,34,122,1111,11123,111112,1111124,11111113,111111111,1111111114};
+                int done=0;
 
                 if(numOfDigits<=10){
                     System.out.println(arr[numOfDigits]);
+                    done=1;
                 }
 
                 String str="";
@@ -47,45 +45,64 @@ public class Main {
                     str+='1';
                 }
 
-                if (isPerfectSquare(numOfDigits) && numOfDigits>10){
+                if (isPerfectSquare(numOfDigits) && numOfDigits>10 && done==0){
                     System.out.println(str);
+                    done=1;
                 }
 
                 BigInteger value=new BigInteger(str);
+                int totalButLastSeven=numOfDigits-9;
 
-                BigInteger one=BigInteger.ONE;
-                int sumOfSquares=0;
-                int a=1;
+                int[] array=new int[888888888];
+                int[] arrKey=new int[888888888];
 
-                if (numOfDigits>10  &&  !isPerfectSquare(numOfDigits)){
-                    int firstupto4thlast=numOfDigits-3;
+                for (int i=0;i<888888888;i++){
+                    arrKey[i]=111111111+i;
+                }
 
-                    while (a==1){
+                for (int i=0;i<888888888;i++){
+                    String str2=String.valueOf(arrKey[i]);
 
-                        String string=value.toString();
-                        for (int i=firstupto4thlast;i<string.length();i++){
-                            if (string.charAt(i)=='0'){
-                                sumOfSquares=0;
-                                break;
-                            }
-                            int num=string.charAt(i)-48;
-                            sumOfSquares+=Math.pow(num,2);
-                        }
-                        if (sumOfSquares!=0){
-
-                            if (isPerfectSquare(sumOfSquares+firstupto4thlast)){
-                                a=0;
-                                System.out.println(value.toString());
-                                break;
-                            }
-
-                        }
-
-                        sumOfSquares=0;
-                        value=value.add(one);
+                    if ((str2.charAt(0)-48)!=0  && (str2.charAt(1)-48)!=0 &&  (str2.charAt(2)-48)!=0 && (str2.charAt(3)-48)!=0  && (str2.charAt(4)-48)!=0 && (str2.charAt(5)-48)!=0  && (str2.charAt(8)-48)!=0 && (str2.charAt(7)-48)!=0 && (str2.charAt(6)-48)!=0 ){
+                        array[i]=(int)(Math.pow((int)(str2.charAt(0)-48),2)+Math.pow((int)(str2.charAt(1)-48),2)+Math.pow((int)(str2.charAt(2)-48),2)+Math.pow((int)(str2.charAt(3)-48),2)+
+                                Math.pow((int)(str2.charAt(4)-48),2)+Math.pow((int)(str2.charAt(5)-48),2)+Math.pow((int)(str2.charAt(6)-48),2)+Math.pow((int)(str2.charAt(7)-48),2)+Math.pow((int)(str2.charAt(7)-48),2));
+                    }
+                    else {
+                        array[i]=-1;
                     }
 
+
                 }
+
+                for (int i=0;i<array.length;i++){
+
+                    if (array[i]>0){
+
+                        double num=totalButLastSeven+array[i];
+
+                        String string=String.valueOf(i);
+                        int end=string.length()-1;
+                        if (string.charAt(end)!=9  && isPerfectSquare(num)){
+                            int vi=array[i];
+                            int v=i;
+
+                            value=value.add(BigInteger.valueOf(i));
+                            break;
+
+                        }
+
+                    }
+
+
+
+                }
+                if (done==0){
+                    System.out.println(value.toString());
+
+                }
+
+
+
 
 
             }
@@ -378,5 +395,4 @@ public class Main {
         }
     }
 }
-
 
