@@ -33,6 +33,12 @@ public class Main {
 
                 int numOfDigits=in.nextInt();
 
+                int[] arr=new int[]{0,1,34,122,1111,11123,111112,1111124,11111113,111111111,1111111114};
+
+                if(numOfDigits<5){
+                    System.out.println(arr[numOfDigits]);
+                }
+
                 String str="";
 
                 for (int i=0;i<numOfDigits;i++){
@@ -45,25 +51,37 @@ public class Main {
                 int sumOfSquares=0;
                 int a=1;
 
-                while (a==1){
+                if (numOfDigits>=5){
+                    int firstupto4thlast=numOfDigits-3;
 
-                    String string=value.toString();
-                    for (char c : string.toCharArray()){
-                        if (c=='0'){
-                            sumOfSquares=5;
-                            break;
+                    while (a==1){
+
+                        String string=value.toString();
+                        for (int i=firstupto4thlast;i<string.length();i++){
+                            if (string.charAt(i)=='0'){
+                                sumOfSquares=0;
+                                break;
+                            }
+                            int num=string.charAt(i)-48;
+                            sumOfSquares+=Math.pow(num,2);
                         }
-                        int num=c-48;
-                        sumOfSquares+=Math.pow(num,2);
+                        if (sumOfSquares!=0){
+
+                            if (isPerfectSquare(sumOfSquares+firstupto4thlast)){
+                                a=0;
+                                System.out.println(value.toString());
+                                break;
+                            }
+
+                        }
+
+                        sumOfSquares=0;
+                        value=value.add(one);
                     }
-                    if (isPerfectSquare(sumOfSquares)){
-                        a=0;
-                        System.out.println(value.toString());
-                        break;
-                    }
-                    sumOfSquares=0;
-                    value=value.add(one);
+
                 }
+
+
             }
 
         }
