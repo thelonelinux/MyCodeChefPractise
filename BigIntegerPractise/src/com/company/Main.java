@@ -21,7 +21,9 @@ public class Main {
 
     public static void main(String[] args) throws java.lang.Exception {
 	// write your code here
-        /** some part working rest all TLE in codechef*/
+        /** some part working rest all TLE in codechef
+         * Even after some optimization its showing TLE only,
+         * I optimize by traversing only last three elements rather than all and adding first upto n-3 digit directly in the sumOfSquares ot save some time*/
 
         try{
 
