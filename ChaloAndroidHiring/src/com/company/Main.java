@@ -39,6 +39,7 @@ public class Main {
                 }
 
                 if (size%2==0  && size!=0){
+ in
 
                 }
             }
