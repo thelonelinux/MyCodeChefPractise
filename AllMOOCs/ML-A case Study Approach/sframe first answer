@@ -1,0 +1,5 @@
+SFrame is supposed to be a general HEP analysis package based on ROOT trees. An analysis in HEP is often performed in cycles. Each cycle usually corresponds to a reduction, or more generally to a new treatment of the data (e.g. calculation of new quantities for each event). SFrame follows this cycle-based analysis approach by splitting an analysis in several cycles. Each cycle takes a number of ROOT trees (e.g. from different sources, like data or different MC generators) in a certain format as input and produces ROOT trees in a different output format. In addition control histograms are produced. SFrame allows the combination of multiple input ROOT trees potentially coming from different physics processes taking into account varying luminosity values to which these trees correspond. In addition, SFrame can properly handle cuts applied on MC generator level of the input trees. The output trees of a certain step are supposed to be the input trees of the next step.
+
+
+only question 2 and 5 mistake . 
+how many rows and ascending order.
